@@ -3,54 +3,34 @@
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
-        <script src="js/main.js" charset="UTF-8"></script>
-        <style>
-            body {
-                color: black;
-                font-size: 16px;
-                font-weight: normal;
-                font-family: '굴림'
-            }
-            .board {
-                width: 80%;
-                border-collapse: collapse;
-            }
-            .board #board-head th {
-                border-bottom: 1px solid black;
-
-            }
-            .board #board-body th {
-                padding: 10px;
-                border-bottom: 1px dotted black;
-                font-size: 16px;
-            }
-            .board #board-body tr:hover {
-                color: crimson;
-            }
-            .board #board-body #title {
-                text-align: left;
-                border-left: 1px dotted black;
-                border-right: 1px dotted black;
-            }
-        </style>
+        <script src="js/main.js?v=1.1" charset="UTF-8"></script>
+        <link rel="stylesheet" href="css/master.css">
     </head>
     <body>
         <div id="display"></div>
 
         <table class = "board">
-            <thead id="board-head"></thead>
+            <thead id="board-head">
+                <tr>
+                    <th colspan="2" id="input-container">
+                        <div id="input" contenteditable="true"></div>
+                    </th>
+                    <th>
+                        <div id="input-button">입력</div>
+                    </th>
+                </tr>
+            </thead>
             <tbody id="board-body"></tbody>
         </table>
-        
 
         <!-- Table format -->
         <script type="text/template" id="table">
             <tr>
-                    <th id="name">
-                        {name}
+                    <th id="num">
+                        {num}
                     </th>
-                    <th id="title">
-                        {title}
+                    <th id="text">
+                        {text}
                     </th>
                     <th id="date">
                         {date}

@@ -1,6 +1,9 @@
 
+var db = [];
+
 window.onload = function() {
     init();
+    render(db);
 }
 
 function loadTemplate(id) {
@@ -20,20 +23,38 @@ function replaceTemplate(template, data) {
 }
 
 function init() {
-    var head = [{name: "이름", title: "제목", date: "시간"}];
-    var head_id = "board-head";
+    var button = document.getElementById("input-button");
+    button.addEventListener("click", popup);
+}
 
-    var body = [];
-    body.push({name: "곰팡이", title: "What if I got CS degree?", date: "오늘"});
-    body.push({name: "Jes", title: "오늘 에기평 간사한테 드립칠뻔한 썰", date:"오늘"});
-    body.push({name: "Emily", title: "브붕콘 그만해 지겨워", date:"오늘"});
-    body.push({name: "Jes", title: "브붕콘 만들기 ver.2.0 끝!", date:"오늘"});
-    body.push({name: "Jes", title: "(죽음)", date:"어제"});
-    body.push({name: "Emily", title: "Jes 살아있니?", date:"어제"});
-    var body_id = "board-body";
+function popup(e) {
+    var text = document.getElementById("input").textContent;
+    console.log;
+    makeToDo(text);
 
-    put_data_into_table(head, head_id);
-    put_data_into_table(body, body_id);
+    render(db);
+}
+
+function makeToDo(text) {
+    let output = {num: 0, text: "", date: ""};
+
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; // January is 0
+
+    let date = mm + "-" + dd;
+    output.num = db.length;
+    output.date = date;
+    output.text = text;
+
+    db.push(output);
+}
+
+function render(body) {
+    let body_id = "board-body";
+
+    if(body.length > 0)
+        put_data_into_table(body, body_id);
 }
 
 function put_data_into_table(data, id) {
