@@ -17,8 +17,6 @@ function replaceTemplate(template, data) {
         result = result.replace('{' + key + '}', data[key]);
     }
     
-    console.log(result);
-    
     return result;
 }
 
@@ -29,7 +27,6 @@ function init() {
 
 function popup(e) {
     var text = document.getElementById("input").textContent;
-    console.log;
     makeToDo(text);
 
     render(db);
@@ -53,21 +50,30 @@ function makeToDo(text) {
 function render(body) {
     let body_id = "board-body";
 
+    resetDOM("board-body");
+
     if(body.length > 0)
         put_data_into_table(body, body_id);
+}
+
+function resetDOM(id) {
+    var table = document.getElementById(id);
+
+    while(table.hasChildNodes()) {
+        table.removeChild(table.firstChild);
+    }
 }
 
 function put_data_into_table(data, id) {
     var table = document.getElementById(id);
 
-    console.log(table);
+    
 
     data.forEach(element => {
         var template = loadTemplate('table');
         result = replaceTemplate(template, element);
 
         var row = document.createElement("tr");
-        console.log(row);
         row.innerHTML = result;
         table.appendChild(row);
     });
