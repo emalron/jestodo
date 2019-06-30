@@ -19,8 +19,8 @@
                         <div class="todo-button" id="input-button">입력</div>
                     </th>
                 </tr>
-                <tr>
-                    <th colspan="3" id="view-mode"><div class="todo-button">할일 보기</div></th>
+                <tr id="mode-display">
+                    
                 </tr>
                 <tr>
                     <th>
@@ -39,7 +39,6 @@
 
         <!-- Table format -->
         <script type="text/template" id="table">
-            
             <tr>
                     <th id="check">
                         <input type="checkbox" value = {num} onchange="itemChecked(this)">
@@ -51,6 +50,11 @@
                         {date}
                     </th>
                 </tr>
+        </script>
+
+        <!-- Mode display format -->
+        <script type="text/template" id="mode">
+            <th colspan="3" id="view-mode" onclick="filterChange()">보기 필터: {filter}</th>
         </script>
     </body>
 </html>

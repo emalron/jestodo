@@ -4,6 +4,7 @@ var filter = {};
 window.onload = function() {
     init();
     filter = filter_unchecked;
+    render_filter('unchecked');
     render(filter);
 }
 
@@ -98,6 +99,17 @@ function put_data_into_table(data, id) {
     });
 }
 
+function render_filter(modeName) {
+    var element = {filter: modeName};
+
+    var template = loadTemplate('mode');
+
+    result = replaceTemplate(template, element);
+
+    var target = document.getElementById("mode-display");
+    target.innerHTML = result;
+}
+
 function saveItem(item) {
     // item properties: checked, text, date
     // in future item properies are going to be restricted.
@@ -120,4 +132,11 @@ function itemChecked(e) {
     localStorage.setItem(id, output);
 
     render(filter);
+}
+
+function filterChange() {
+    if(filter == filter_unchecked) {
+        // to be deternmined
+        render_filter('checked');
+    }
 }
