@@ -109,4 +109,6 @@ function itemChecked(e) {
 
     var output = JSON.stringify(item);
     localStorage.setItem(id, output);
+
+    render();
 }
