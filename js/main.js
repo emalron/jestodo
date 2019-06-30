@@ -1,9 +1,10 @@
 
-var db = [];
+var filter = {};
 
 window.onload = function() {
     init();
-    render(db);
+    filter = filter_unchecked;
+    render(filter);
 }
 
 function loadTemplate(id) {
@@ -30,7 +31,7 @@ function popup(e) {
     var text = document.getElementById("input").textContent;
     makeToDo(text);
 
-    render(db);
+    render(filter);
 }
 
 function makeToDo(text) {
@@ -49,12 +50,21 @@ function makeToDo(text) {
     saveItem(output);
 }
 
-function render() {
+function render(callback) {
     let body_id = "board-body";
 
     resetDOM("board-body");
 
+    let body = callback();
+    
+
+    if(body.length > 0)
+        put_data_into_table(body, body_id);
+}
+
+function filter_unchecked() {
     let body = [];
+
     for(let i=0; i< localStorage.length; i++) {
         let item = JSON.parse(localStorage.getItem(i));
 
@@ -63,8 +73,7 @@ function render() {
         }
     }
 
-    if(body.length > 0)
-        put_data_into_table(body, body_id);
+    return body;
 }
 
 function resetDOM(id) {
@@ -110,5 +119,5 @@ function itemChecked(e) {
     var output = JSON.stringify(item);
     localStorage.setItem(id, output);
 
-    render();
+    render(filter);
 }

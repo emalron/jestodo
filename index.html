@@ -4,7 +4,7 @@
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
         <script src="js/main.js?v=1.4" charset="UTF-8"></script>
-        <link rel="stylesheet" href="css/master.css">
+        <link rel="stylesheet" href="css/master.css?v=1.0">
     </head>
     <body>
         <div id="display"></div>
@@ -16,20 +16,23 @@
                         <div id="input" contenteditable="true"></div>
                     </th>
                     <th>
-                        <div id="input-button">입력</div>
+                        <div class="todo-button" id="input-button">입력</div>
                     </th>
                 </tr>
                 <tr>
-                        <th>
-                            했니?
-                        </th>
-                        <th>
-                            할-일
-                        </th>
-                        <th>
-                            쓴 날자
-                        </th>
-                    </tr>
+                    <th colspan="3" id="view-mode"><div class="todo-button">할일 보기</div></th>
+                </tr>
+                <tr>
+                    <th>
+                        했니?
+                    </th>
+                    <th>
+                        할-일
+                    </th>
+                    <th>
+                        쓴 날자
+                    </th>
+                </tr>
             </thead>
             <tbody id="board-body"></tbody>
         </table>

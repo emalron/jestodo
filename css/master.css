@@ -14,14 +14,10 @@ body {
     padding: 10px;
 }
 
-.board #board-head #input-container {
-    
-}
-
 .board #board-head #input {
     border-bottom: 1px dotted black;
 }
-.board #board-head #input-button {
+.todo-button {
     border: 1px solid black;
     border-radius: 5px;
     height: 40px;
@@ -30,10 +26,20 @@ body {
     text-align:center;
     margin:auto;
 }
-.board #board-head #input-button:hover {
+.todo-button:hover {
     cursor: grab;
     user-select: none;
     color: crimson;
+}
+
+.board #board-head #view-mode {
+    text-align: left;
+}
+.board #board-head #view-mode:hover {
+    text-align: left;
+    user-select: none;
+    color: crimson;
+    cursor: grab;
 }
 
 .board #board-body th {
