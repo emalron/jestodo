@@ -1,5 +1,6 @@
 
 var filter = {};
+var database;
 
 window.onload = function() {
     init();
@@ -25,13 +26,16 @@ function replaceTemplate(template, data) {
 function init() {
     var button = document.getElementById("input-button");
     button.addEventListener("click", popup);
-    localStorage.clear();
+
+    // database setting
+    var db = {data: []};
+    localStorage.setItem('todo', JSON.stringify(db));
 }
 
 function popup(e) {
     var text = document.getElementById("input").textContent;
-    makeToDo(text);
 
+    makeToDo(text);
     render(filter);
 }
 
@@ -47,7 +51,6 @@ function makeToDo(text) {
     output.date = date;
     output.text = text;
 
-    // db.push(output);
     saveItem(output);
 }
 
@@ -63,24 +66,27 @@ function render(callback) {
 
 function filter_unchecked() {
     let body = [];
+    var db = JSON.parse(localStorage.getItem('todo'));
 
-    for(let i=0; i< localStorage.length; i++) {
-        let item = JSON.parse(localStorage.getItem(i));
+    for(let i=0; i< db.data.length; i++) {
+        let item = db.data[i];
 
-        if(item.check == '') {
+        if(item != null && item.check == '') {
             body.push(item);
         }
     }
+
     return body;
 }
 
 function filter_checked() {
     let body = [];
+    var db = JSON.parse(localStorage.getItem('todo'));
 
-    for(let i=0; i< localStorage.length; i++) {
-        let item = JSON.parse(localStorage.getItem(i));
+    for(let i=0; i< db.data.length; i++) {
+        let item = db.data[i];
 
-        if(item.check == 'checked') {
+        if(item != null && item.check == 'checked') {
             body.push(item);
         }
     }
@@ -120,27 +126,42 @@ function render_filter(modeName) {
 function saveItem(item) {
     // item properties: checked, text, date
     // in future item properies are going to be restricted.
-    var num = localStorage.length;
-    item.num = num;
-    var value = JSON.stringify(item);
+    var key = 'todo';
 
-    localStorage.setItem(num, value);
+    var db = JSON.parse(localStorage.getItem(key));
+    if(db == null) {
+        db = {data: []};
+    }
+
+    var num = db.data.length;
+    item.num = num;
+    db.data.push(item);
+
+    var value = JSON.stringify(db);
+    localStorage.setItem(key, value);
 }
 
 function itemChecked(e) {
     var node = e;
     var id = node.value;
 
-    var item = JSON.parse(localStorage.getItem(id));
-    if(e.checked) {
-        item.check = 'checked';
-    }
-    else {
-        item.check = '';
+    var db = JSON.parse(localStorage.getItem('todo'));
+
+    for(let i=0; i<db.data.length; i++) {
+        var item = db.data[i];
+
+        if(item.num == id) {
+            if(e.checked) {
+                item.check = 'checked';
+            }
+            else {
+                item.check = '';
+            }
+        }
     }
 
-    var output = JSON.stringify(item);
-    localStorage.setItem(id, output);
+    var output = JSON.stringify(db);
+    localStorage.setItem('todo', output);
 
     render(filter);
 }

@@ -3,7 +3,7 @@
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
-        <script src="js/main.js?v=1.4" charset="UTF-8"></script>
+        <script src="js/main.js?v=1.5" charset="UTF-8"></script>
         <link rel="stylesheet" href="css/master.css?v=1.0">
     </head>
     <body>
@@ -55,6 +55,29 @@
         <!-- Mode display format -->
         <script type="text/template" id="mode">
             <th colspan="3" id="view-mode" onclick="filterChange()"}>보기 필터: {filter}</th>
+        </script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+        
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#config-web-app -->
+            <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB4Qmp2cMpRYo-HTUB2tKzIUYYRm7Sv7m8",
+            authDomain: "todo-70ce3.firebaseapp.com",
+            databaseURL: "https://todo-70ce3.firebaseio.com",
+            projectId: "todo-70ce3",
+            storageBucket: "todo-70ce3.appspot.com",
+            messagingSenderId: "227153971315",
+            appId: "1:227153971315:web:2fafead09f13d15c"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
         </script>
     </body>
 </html>
