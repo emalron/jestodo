@@ -67,7 +67,7 @@ function filter_unchecked() {
     for(let i=0; i< localStorage.length; i++) {
         let item = JSON.parse(localStorage.getItem(i));
 
-        if(item.check == false) {
+        if(item.check == '') {
             body.push(item);
         }
     }
@@ -80,7 +80,7 @@ function filter_checked() {
     for(let i=0; i< localStorage.length; i++) {
         let item = JSON.parse(localStorage.getItem(i));
 
-        if(item.check == true) {
+        if(item.check == 'checked') {
             body.push(item);
         }
     }
@@ -130,9 +130,14 @@ function saveItem(item) {
 function itemChecked(e) {
     var node = e;
     var id = node.value;
-    var item = JSON.parse(localStorage.getItem(id));
 
-    item.check = e.checked;
+    var item = JSON.parse(localStorage.getItem(id));
+    if(e.checked) {
+        item.check = 'checked';
+    }
+    else {
+        item.check = '';
+    }
 
     var output = JSON.stringify(item);
     localStorage.setItem(id, output);
