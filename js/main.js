@@ -57,8 +57,6 @@ function render(callback) {
     resetDOM("board-body");
 
     let body = callback();
-    
-
     if(body.length > 0)
         put_data_into_table(body, body_id);
 }
@@ -73,7 +71,19 @@ function filter_unchecked() {
             body.push(item);
         }
     }
+    return body;
+}
 
+function filter_checked() {
+    let body = [];
+
+    for(let i=0; i< localStorage.length; i++) {
+        let item = JSON.parse(localStorage.getItem(i));
+
+        if(item.check == true) {
+            body.push(item);
+        }
+    }
     return body;
 }
 
@@ -90,10 +100,9 @@ function put_data_into_table(data, id) {
 
     data.forEach(element => {
         var template = loadTemplate('table');
-
-        result = replaceTemplate(template, element);
-
+        var result = replaceTemplate(template, element);
         var row = document.createElement("tr");
+
         row.innerHTML = result;
         table.appendChild(row);
     });
@@ -101,19 +110,16 @@ function put_data_into_table(data, id) {
 
 function render_filter(modeName) {
     var element = {filter: modeName};
-
     var template = loadTemplate('mode');
-
-    result = replaceTemplate(template, element);
-
+    var result = replaceTemplate(template, element);
     var target = document.getElementById("mode-display");
+
     target.innerHTML = result;
 }
 
 function saveItem(item) {
     // item properties: checked, text, date
     // in future item properies are going to be restricted.
-
     var num = localStorage.length;
     item.num = num;
     var value = JSON.stringify(item);
@@ -126,7 +132,7 @@ function itemChecked(e) {
     var id = node.value;
     var item = JSON.parse(localStorage.getItem(id));
 
-    item.check = e.check;
+    item.check = e.checked;
 
     var output = JSON.stringify(item);
     localStorage.setItem(id, output);
@@ -137,6 +143,15 @@ function itemChecked(e) {
 function filterChange() {
     if(filter == filter_unchecked) {
         // to be deternmined
+        filter = filter_checked;
         render_filter('checked');
+        render(filter);
+    }
+
+    else if (filter == filter_checked) {
+        // to be determined
+        filter = filter_unchecked;
+        render_filter('unchecked');
+        render(filter);
     }
 }
