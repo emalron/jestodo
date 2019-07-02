@@ -19,20 +19,3 @@ async function init() {
     
     database = firebase.database();
 }
-
-function loadDB() {
-    return database.ref().child('todos').once('value').then(sp => {
-        var body = [];
-        var e = sp.val();
-        if(e != null) {
-            Object.keys(e).map( key =>{
-                var item = e[key];
-                item.key = key;
-                body.push(item);
-            })
-        }
-        
-        return body;
-    })
-}
-
