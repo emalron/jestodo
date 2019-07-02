@@ -5,7 +5,7 @@ body {
     font-family: '굴림'
 }
 .board {
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -59,4 +59,14 @@ body {
     border-left: 1px dotted black;
     border-right: 1px dotted black;
     width: 70%;
+}
+.board #board-body #date {
+    border-right: 1px dotted black;
+}
+
+.board #board-body #del-button {
+    color: darkcyan;
+    width: 10%;
+    text-align: center;
+    margin:auto;
 }

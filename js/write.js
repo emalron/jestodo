@@ -29,7 +29,7 @@ function saveItem(item) {
     database.ref().update(updates);
 }
 
-async function itemChecked(e) {
+async function check_event(e) {
     var node = e;
     var id = node.value;
     var db = await filter();

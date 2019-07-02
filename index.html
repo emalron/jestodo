@@ -8,6 +8,7 @@
         <script src="js/read.js?v=1.0" charset="UTF-8"></script>
         <script src="js/write.js?v=1.0" charset="UTF-8"></script>
         <script src="js/update.js?v=1.0" charset="UTF-8"></script>
+        <script src="js/delete.js?v=1.0" charset="UTF-8"></script>
     </head>
     <body>
         <div id="display"></div>
@@ -35,6 +36,9 @@
                     <th>
                         쓴 날짜
                     </th>
+                    <th>
+                        지우자
+                    </th>
                 </tr>
             </thead>
             <tbody id="board-body"></tbody>
@@ -44,7 +48,7 @@
         <script type="text/template" id="table">
             <tr>
                     <th id="check">
-                        <input type="checkbox" value = {num} onchange="itemChecked(this)" {check}>
+                        <input type="checkbox" value = {num} onchange="check_event(this)" {check}>
                     </th>
                     <th id="text">
                         {text}
@@ -52,12 +56,15 @@
                     <th id="date">
                         {date}
                     </th>
+                    <th id="del">
+                        <div id="del-button" value = {num} onclick="delete_event(this)">X</div>
+                    </th>
                 </tr>
         </script>
 
         <!-- Mode display format -->
         <script type="text/template" id="mode">
-            <th colspan="3" id="view-mode" onclick="filterChange()"}>보기 필터: {filter}</th>
+            <th colspan="4" id="view-mode" onclick="filterChange()"}>보기 필터: {filter}</th>
         </script>
 
         

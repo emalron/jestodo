@@ -26,7 +26,8 @@ function replaceTemplate(template, data) {
     var result = template;
     
     for(var key in data) {
-        result = result.replace('{' + key + '}', data[key]);
+        var regex = new RegExp("{" + key + "}", "g");
+        result = result.replace(regex, data[key]);
     }
     
     return result;
