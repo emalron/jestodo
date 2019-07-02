@@ -15,5 +15,5 @@ async function delete_event(e) {
     updates['todos/'+key] = item;
     database.ref().update(updates);
     
-    render(filter);
+    render_body(filter);
 }

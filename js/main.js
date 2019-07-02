@@ -5,8 +5,8 @@ var database;
 window.onload = function() {
     init();
     filter = filter_unchecked;
-    render_filter('unchecked');
-    render(filter);
+    render_filter('끝낸 일 보여줘');
+    render_body(filter);
 }
 
 async function init() {
@@ -14,8 +14,5 @@ async function init() {
     button.addEventListener("click", write_event);
 
     // database setting
-    var db = {data: []};
-    localStorage.setItem('todo', JSON.stringify(db));
-    
     database = firebase.database();
 }

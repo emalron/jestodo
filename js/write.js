@@ -2,7 +2,7 @@ async function write_event(e) {
     var text = document.getElementById("input").textContent;
 
     await makeToDo(text);
-    render(filter);
+    render_body(filter);
 }
 
 async function makeToDo(text) {
@@ -47,5 +47,5 @@ async function check_event(e) {
     updates['todos/' + key] = item;
     database.ref().update(updates);
     
-    render(filter);
+    render_body(filter);
 }

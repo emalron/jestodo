@@ -7,7 +7,7 @@
         <script src="js/main.js?v=1.6" charset="UTF-8"></script>
         <script src="js/read.js?v=1.1" charset="UTF-8"></script>
         <script src="js/write.js?v=1.1" charset="UTF-8"></script>
-        <script src="js/update.js?v=1.1" charset="UTF-8"></script>
+        <script src="js/update.js?v=1.2" charset="UTF-8"></script>
         <script src="js/delete.js?v=1.1" charset="UTF-8"></script>
     </head>
     <body>
@@ -26,19 +26,8 @@
                 <tr id="mode-display">
                     
                 </tr>
-                <tr>
-                    <th>
-                        했니?
-                    </th>
-                    <th>
-                        할-일
-                    </th>
-                    <th>
-                        쓴 날짜
-                    </th>
-                    <th>
-                        지우자
-                    </th>
+                <tr id="title-display">
+
                 </tr>
             </thead>
             <tbody id="board-body"></tbody>
@@ -64,9 +53,24 @@
 
         <!-- Mode display format -->
         <script type="text/template" id="mode">
-            <th colspan="4" id="view-mode" onclick="filterChange()"}>보기 필터: {filter}</th>
+            <th colspan="4" id="view-mode" onclick="filterChange()"}>{filter}</th>
         </script>
-
+        
+        <!-- Title format -->
+        <script type="text/template" id="title">
+            <th>
+                했니?
+            </th>
+            <th>
+                {title}
+            </th>
+            <th>
+                쓴 날짜
+            </th>
+            <th>
+                지우자
+            </th>
+        </script>
         
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>

@@ -38,14 +38,14 @@ function filterChange() {
     if(filter == filter_unchecked) {
         // to be deternmined
         filter = filter_checked;
-        render_filter('checked');
-        render(filter);
+        render_filter('할 일 보여줘');
+        render_body(filter);
     }
 
     else if (filter == filter_checked) {
         // to be determined
         filter = filter_unchecked;
-        render_filter('unchecked');
-        render(filter);
+        render_filter('끝낸 일 보여줘');
+        render_body(filter);
     }
 }
