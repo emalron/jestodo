@@ -1,32 +1,12 @@
-function filter_unchecked() {
+async function filter(mode) {
     let body = [];
     var db = database.ref('todos/');
     
-    return db.once('value').then(function(sp) {
+    return db.orderByChild('check').equalTo(mode).once('value').then(function(sp) {
         var b = sp.val();
-        
         if(b != null) {
             Object.keys(b).map(function(key) {
-                if(b[key].check == '')
-                    body.push(b[key]);
-            })
-        }
-        
-        return body;
-    })
-}
-
-function filter_checked() {
-    let body = [];
-    var db = database.ref('todos/');
-    
-    return db.once('value').then(function(sp) {
-        var b = sp.val();
-        
-        if(b != null) {
-            Object.keys(b).map(function(key) {
-                if(b[key].check == 'checked')
-                    body.push(b[key]);
+                body.push(b[key]);
             })
         }
         
@@ -35,16 +15,16 @@ function filter_checked() {
 }
 
 function filterChange() {
-    if(filter == filter_unchecked) {
+    if(mode == "") {
         // to be deternmined
-        filter = filter_checked;
+        mode = "checked"
         render_filter('할 일 보여줘');
         render_body(filter);
     }
 
-    else if (filter == filter_checked) {
+    else if (mode == "checked") {
         // to be determined
-        filter = filter_unchecked;
+        mode = ""
         render_filter('끝낸 일 보여줘');
         render_body(filter);
     }

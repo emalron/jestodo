@@ -22,9 +22,13 @@ async function makeToDo(text) {
 
 function saveItem(item) {
     var newKey = database.ref().child('todos').push().key;
-    var updates = {};
     
     item.key = newKey;
+    updateItem(item);
+}
+
+function updateItem(item) {
+    var updates = {};
     updates['todos/' + newKey] = item;
     database.ref().update(updates);
 }
@@ -43,9 +47,6 @@ async function check_event(e) {
         item.check = '';
     }
     
-    var updates = {};
-    updates['todos/' + key] = item;
-    database.ref().update(updates);
-    
+    updateItem(item);
     render_body(filter);
 }
