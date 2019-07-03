@@ -3,12 +3,12 @@
     <head>
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
-        <link rel="stylesheet" href="css/master.css?v=1.1">
+        <link rel="stylesheet" href="css/master.css?v=1.3">
         <script src="js/main.js?v=1.6" charset="UTF-8"></script>
         <script src="js/read.js?v=1.1" charset="UTF-8"></script>
-        <script src="js/write.js?v=1.1" charset="UTF-8"></script>
-        <script src="js/update.js?v=1.2" charset="UTF-8"></script>
-        <script src="js/delete.js?v=1.1" charset="UTF-8"></script>
+        <script src="js/write.js?v=1.2" charset="UTF-8"></script>
+        <script src="js/update.js?v=1.3" charset="UTF-8"></script>
+        <script src="js/delete.js?v=1.2" charset="UTF-8"></script>
     </head>
     <body>
         <div id="display"></div>
@@ -21,6 +21,10 @@
                     </th>
                     <th>
                         <div class="todo-button" id="input-button">입력</div>
+                    </th>
+                    <th>
+                        <div class="todo-button" id="login-button" onclick="login_event()">Login</div>
+                        <div class="todo-button" id="logout-button" onclick="logout_event()">Logout</div>
                     </th>
                 </tr>
                 <tr id="mode-display">

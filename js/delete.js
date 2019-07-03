@@ -1,6 +1,6 @@
 async function delete_event(e) {
     var num = e.getAttribute('value');
-    var db = await filter();
+    var db = await filter(mode);
     var item = db[num];
     var key = item.key;
 

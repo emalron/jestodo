@@ -27,11 +27,15 @@ function render_title(titleName) {
 
 async function render_body(callback) {
     let body_id = "board-body";
-
     let body = await callback(mode);
 
     if(body.length > 0)
         put_data_into_table(body, body_id);
+}
+
+function render_clear(id) {
+    var table = document.getElementById(id);
+    table.innerHTML = "";
 }
 
 function loadTemplate(id) {
@@ -51,7 +55,6 @@ function replaceTemplate(template, data) {
 
 function put_data_into_table(data, id) {
     var table = document.getElementById(id);
-
     let num = 0;
     var buf = "";
     data.forEach(element => {

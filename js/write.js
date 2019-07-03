@@ -29,14 +29,14 @@ function saveItem(item) {
 
 function updateItem(item) {
     var updates = {};
-    updates['todos/' + newKey] = item;
+    updates['todos/' + item.key] = item;
     database.ref().update(updates);
 }
 
 async function check_event(e) {
     var node = e;
     var id = node.value;
-    var db = await filter();
+    var db = await filter(mode);
     var item = db[id];
     var key = item.key;
     

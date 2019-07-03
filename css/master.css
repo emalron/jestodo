@@ -42,6 +42,13 @@ body {
     cursor: grab;
 }
 
+.board #board-head #login-button {
+    display: none;
+}
+.board #board-head #logout-button {
+    display: none;
+}
+
 .board #board-body th {
     padding: 10px;
     border-bottom: 1px dotted black;
@@ -70,3 +77,4 @@ body {
     text-align: center;
     margin:auto;
 }
+
