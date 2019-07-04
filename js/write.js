@@ -1,8 +1,38 @@
 async function write_event(e) {
-    var text = document.getElementById("input").textContent;
 
-    await makeToDo(text);
-    render_body(filter);
+    if(auth.currentUser) {
+        var text = document.getElementById("input").textContent;
+
+        if(text_check(text)) {
+            await makeToDo(text);
+            render_body(filter);
+            washing();
+        }
+        else {
+            you_have_to("input");
+        }
+    }
+    else {
+        you_have_to("login-button");
+    }
+}
+
+function text_check(text) {
+    if(!text) {
+        return false;
+    }
+    return true;
+}
+
+function you_have_to(id) {
+    let button = document.getElementById(id);
+
+    console.log("you have to login");
+
+    button.style.backgroundColor = "red";
+    setTimeout(function() {
+        button.style.backgroundColor = "white";
+    }, 200)
 }
 
 async function makeToDo(text) {
@@ -36,6 +66,24 @@ function updateItem(item) {
     database.ref().update(updates);
 }
 
+function washing() {
+    let input = document.getElementById("input");
+
+    // remove text in the input box
+    input.innerText = "";
+
+    // move focus to the input box
+    input.focus();
+
+    // if mode is "checked" then back to mode ""
+    if (mode == "checked") {
+        // to be determined
+        mode = ""
+        render_filter('끝낸 일 보여줘');
+        render_body(filter);
+    }
+}
+
 async function check_event(e) {
     var node = e;
     var id = node.value;
@@ -44,10 +92,6 @@ async function check_event(e) {
     var item = db[id];
     var key = item.key;
 
-    console.log(id)
-    console.log(db)
-    console.log(item)
-    
     if(e.checked) {
         item.check = 'checked';
     }

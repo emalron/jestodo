@@ -16,6 +16,7 @@ body {
 
 .board #board-head #input {
     border-bottom: 1px dotted black;
+    transition: background 0.4s;
 }
 .todo-button {
     border: 1px solid black;
@@ -44,6 +45,7 @@ body {
 
 .board #board-head #login-button {
     display: none;
+    transition: background 0.4s;
 }
 .board #board-head #logout-button {
     display: none;
