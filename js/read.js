@@ -1,6 +1,8 @@
-async function filter(mode) {
+function filter(mode) {
     let body = [];
-    var db = database.ref('todos/');
+    let user = auth.currentUser;
+    let uid = user.uid;
+    var db = database.ref('todos/').child(uid);
     
     return db.orderByChild('check').equalTo(mode).once('value').then(function(sp) {
         var b = sp.val();

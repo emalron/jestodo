@@ -8,18 +8,18 @@ window.onload = function() {
     init();
     mode = "";
     render_filter('끝낸 일 보여줘');
-    render_body(filter);
+    // render_body(filter);
 }
 
 function init() {
     var button = document.getElementById("input-button");
     button.addEventListener("click", write_event);
 
-    // database setting
-    database = firebase.database();
-
     auth = firebase.auth();
     auth.onAuthStateChanged(auth_change_event);
+
+    // database setting
+    database = firebase.database();
 }
 
 function login_event() {
