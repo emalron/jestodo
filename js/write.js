@@ -43,6 +43,10 @@ async function check_event(e) {
 
     var item = db[id];
     var key = item.key;
+
+    console.log(id)
+    console.log(db)
+    console.log(item)
     
     if(e.checked) {
         item.check = 'checked';

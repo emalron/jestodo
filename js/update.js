@@ -29,8 +29,13 @@ async function render_body(callback) {
     let body_id = "board-body";
     let body = await callback(mode);
 
-    if(body.length > 0)
+    if(body.length > 0) {
         put_data_into_table(body, body_id);
+    }
+    else {
+        render_clear('board-body');
+    }
+        
 }
 
 function render_clear(id) {
