@@ -32,6 +32,11 @@ function login_event() {
     })
     .catch(error => {
         console.log('error in google login', error);
+        var err = error.code;
+        var err_msg = error.message;
+
+        console.log(err);
+        console.log(err_msg);
     })
 }
 
