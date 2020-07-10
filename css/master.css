@@ -2,7 +2,8 @@ body {
     color: black;
     font-size: 16px;
     font-weight: normal;
-    font-family: '굴림'
+    font-family: '나눔고딕';
+    background-color: #e9e9e9;
 }
 .board {
     width: 100%;
@@ -10,16 +11,16 @@ body {
 }
 
 .board #board-head th {
-    border-bottom: 1px solid black;
+    border: 0px;
     padding: 10px;
 }
 
 .board #board-head #input {
-    border-bottom: 1px dotted black;
+    border-bottom: 1px dotted #a9a9a9;
     transition: background 0.4s;
 }
 .todo-button {
-    border: 1px solid black;
+    border: 0px solid black;
     border-radius: 5px;
     height: 40px;
     line-height: 40px;
@@ -53,7 +54,7 @@ body {
 
 .board #board-body th {
     padding: 10px;
-    border-bottom: 1px dotted black;
+    border-bottom: 0px dotted black;
     font-size: 16px;
 }
 .board #board-body tr:hover {
@@ -65,12 +66,12 @@ body {
 }
 .board #board-body #text {
     text-align: left;
-    border-left: 1px dotted black;
-    border-right: 1px dotted black;
+    border-left: 0px dotted black;
+    border-right: 0px dotted black;
     width: 70%;
 }
 .board #board-body #date {
-    border-right: 1px dotted black;
+    border-right: 0px dotted black;
 }
 
 .board #board-body #del-button {
